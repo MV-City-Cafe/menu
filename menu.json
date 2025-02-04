@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Classic Burger",
+        "description": "Fresh beef patty with cheese, lettuce, and our special sauce"
+    },
+    {
+        "name": "Veggie Wrap",
+        "description": "Grilled veggies wrapped in a soft tortilla"
+    },
+    {
+        "name": "Milkshake",
+        "description": "Chocolate, vanilla, or strawberry"
+    }
+]
