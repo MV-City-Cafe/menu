@@ -179,6 +179,28 @@ button:hover {
     }
 }
 
+/* Icon-based Theme Toggle Button */
+.theme-toggle {
+    background-color: transparent;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1.5rem; /* Icon size */
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle i {
+    color: #ff8c00; /* Retro orange color for icon */
+}
+
+body.dark-theme .theme-toggle i {
+    color: #fff; /* White icon color for dark theme */
+}
+
 /* General Styles */
 body {
     font-family: 'Roboto', sans-serif;
