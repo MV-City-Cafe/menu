@@ -128,6 +128,23 @@ main .menu {
     color: #ff8c00;
 }
 
+/* About Page Styling */
+.about-section {
+    margin: 40px;
+    font-size: 1.1rem;
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    color: #ff8c00;
+    margin-top: 30px;
+}
+
+.about-section p {
+    margin-bottom: 20px;
+    color: #3e3e3e;
+}
+
 /* Responsive Layout */
 @media (max-width: 768px) {
     .menu-item {
