@@ -186,6 +186,35 @@ button:hover {
     background-color: #3e8e41;
 }
 
+/* Footer Styling */
+footer {
+    background-color: #ff8c00;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.footer-content p {
+    margin: 10px 0;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    margin: 0 15px;
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #4caf50; /* Green hover effect */
+}
+
 /* Responsive Layout */
 @media (max-width: 768px) {
     .menu-item {
