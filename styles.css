@@ -215,6 +215,20 @@ footer {
     color: #4caf50; /* Green hover effect */
 }
 
+/* Google Maps Styling */
+.map-container {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.map-container iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    border: none;
+    border-radius: 8px;
+}
+
 /* Responsive Layout */
 @media (max-width: 768px) {
     .menu-item {
