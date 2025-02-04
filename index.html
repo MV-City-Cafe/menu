@@ -13,6 +13,10 @@
             <h1>Café Retro</h1>
             <p>Your favorite place for delicious meals</p>
         </div>
+        <!-- Toggle Button for Dark/Light Theme -->
+        <button id="theme-toggle" class="theme-toggle">
+            Switch to Dark Theme
+        </button>
     </header>
 
     <nav>
@@ -52,5 +56,32 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        const themeToggleButton = document.getElementById("theme-toggle");
+        const body = document.body;
+    
+        // Check if the user has a saved theme preference
+        const currentTheme = localStorage.getItem("theme");
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+        } else {
+            body.classList.add("light-theme"); // Default theme
+        }
+    
+        // Toggle themes on button click
+        themeToggleButton.addEventListener("click", () => {
+            if (body.classList.contains("light-theme")) {
+                body.classList.remove("light-theme");
+                body.classList.add("dark-theme");
+                themeToggleButton.textContent = "Switch to Light Theme";
+                localStorage.setItem("theme", "dark-theme"); // Save user preference
+            } else {
+                body.classList.remove("dark-theme");
+                body.classList.add("light-theme");
+                themeToggleButton.textContent = "Switch to Dark Theme";
+                localStorage.setItem("theme", "light-theme"); // Save user preference
+            }
+        });
+    </script>
 </body>
 </html>
