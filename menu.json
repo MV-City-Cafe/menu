@@ -1,14 +1,18 @@
 [
     {
         "name": "Classic Burger",
-        "description": "Fresh beef patty with cheese, lettuce, and our special sauce"
+        "description": "Fresh beef patty with cheese, lettuce, and our special sauce."
     },
     {
         "name": "Veggie Wrap",
-        "description": "Grilled veggies wrapped in a soft tortilla"
+        "description": "Grilled veggies wrapped in a soft tortilla."
     },
     {
         "name": "Milkshake",
-        "description": "Chocolate, vanilla, or strawberry"
+        "description": "Chocolate, vanilla, or strawberry flavors."
+    },
+    {
+        "name": "Cheese Fries",
+        "description": "Crispy fries topped with melted cheese and sauce."
     }
 ]
