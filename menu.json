@@ -1,18 +1,38 @@
-[
-    {
-        "name": "Classic Burger",
-        "description": "Fresh beef patty with cheese, lettuce, and our special sauce."
-    },
-    {
-        "name": "Veggie Wrap",
-        "description": "Grilled veggies wrapped in a soft tortilla."
-    },
-    {
-        "name": "Milkshake",
-        "description": "Chocolate, vanilla, or strawberry flavors."
-    },
-    {
-        "name": "Cheese Fries",
-        "description": "Crispy fries topped with melted cheese and sauce."
-    }
-]
+{
+    "breakfast": [
+        {
+            "name": "Pancakes",
+            "description": "Fluffy pancakes with maple syrup and butter.",
+            "price": "$5.99",
+            "image": "images/pancakes.jpg"
+        },
+        {
+            "name": "Omelette",
+            "description": "Three eggs with your choice of fillings: cheese, veggies, and meats.",
+            "price": "$7.49",
+            "image": "images/omelette.jpg"
+        }
+    ],
+    "lunch": [
+        {
+            "name": "Classic Burger",
+            "description": "Fresh beef patty with cheese, lettuce, and our special sauce.",
+            "price": "$8.99",
+            "image": "images/burger.jpg"
+        },
+        {
+            "name": "Caesar Salad",
+            "description": "Crisp romaine with creamy Caesar dressing and croutons.",
+            "price": "$6.49",
+            "image": "images/salad.jpg"
+        }
+    ],
+    "drinks": [
+        {
+            "name": "Milkshake",
+            "description": "Chocolate, vanilla, or strawberry flavors.",
+            "price": "$4.50",
+            "image": "images/milkshake.jpg"
+        }
+    ]
+}
