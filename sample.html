@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Bites Cafeteria</title>
+    <!-- Add React and ReactDOM -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <!-- Add Babel for JSX -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+    <!-- Add Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        :root {
+            --primary-color: #4a6741;
+            --secondary-color: #f4f1de;
+            --accent-color: #e07a5f;
+        }
+
+        /* ... rest of your original CSS ... */
+        /* Keep all the original styles from the previous website */
+        
+        /* Add styles for React root container */
+        #menu-root {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fresh Bites Cafeteria</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#hours">Hours & Location</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <img src="/api/placeholder/1200/400" alt="Cafeteria interior">
+        <div class="hero-content">
+            <h2>Welcome to Fresh Bites</h2>
+            <p>Serving fresh, delicious meals daily</p>
+        </div>
+    </section>
+
+    <!-- Replace the static menu section with a container for our React app -->
+    <section id="menu" class="menu-section">
+        <div id="menu-root"></div>
+    </section>
+
+    <section id="hours" class="hours-location">
+        <h2>Hours & Location</h2>
+        <p>Monday - Friday: 7:00 AM - 5:00 PM</p>
+        <p>Saturday: 8:00 AM - 3:00 PM</p>
+        <p>Sunday: Closed</p>
+        <p>123 Main Street, Anytown, USA</p>
+    </section>
+
+    <section id="contact" class="contact-form">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Message" rows="4" required></textarea>
+            <button type="submit" class="button">Send Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Fresh Bites Cafeteria. All rights reserved.</p>
+    </footer>
+
+    <!-- Add the React component script -->
+    <script type="text/babel">
+        // Define the DynamicMenu component
+
+        import React, { useState } from 'react';
+        import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+        import { Button } from '@/components/ui/button';
+        import { Search } from 'lucide-react';
+        
+        const DynamicMenu = () => {
+          // Sample menu data - in a real app, this would come from an API
+          const menuItems = [
+            { id: 1, name: 'Classic Breakfast', price: 8.99, category: 'Breakfast', description: 'Eggs, bacon, toast, and hash browns', calories: 850, isVegetarian: false },
+            { id: 2, name: 'Veggie Omelette', price: 9.99, category: 'Breakfast', description: 'Three-egg omelette with seasonal vegetables', calories: 450, isVegetarian: true },
+            { id: 3, name: 'Chicken Caesar Salad', price: 11.99, category: 'Lunch', description: 'Grilled chicken with romaine and caesar dressing', calories: 550, isVegetarian: false },
+            { id: 4, name: 'Veggie Burger', price: 10.99, category: 'Lunch', description: 'Plant-based patty with lettuce and tomato', calories: 480, isVegetarian: true },
+            { id: 5, name: 'Fresh Fruit Bowl', price: 6.99, category: 'Snacks', description: 'Seasonal fresh fruit mix', calories: 120, isVegetarian: true },
+            { id: 6, name: 'Greek Yogurt Parfait', price: 5.99, category: 'Snacks', description: 'Yogurt with granola and berries', calories: 310, isVegetarian: true }
+          ];
+        
+          const [selectedCategory, setSelectedCategory] = useState('All');
+          const [showVegetarian, setShowVegetarian] = useState(false);
+          const [searchTerm, setSearchTerm] = useState('');
+        
+          // Get unique categories
+          const categories = ['All', ...new Set(menuItems.map(item => item.category))];
+        
+          // Filter menu items based on selected filters and search term
+          const filteredItems = menuItems.filter(item => {
+            const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
+            const matchesVegetarian = !showVegetarian || item.isVegetarian;
+            const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                 item.description.toLowerCase().includes(searchTerm.toLowerCase());
+            return matchesCategory && matchesVegetarian && matchesSearch;
+          });
+        
+          return (
+            <div className="max-w-4xl mx-auto p-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle className="text-2xl font-bold text-center mb-4">Today's Menu</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {/* Search and Filters */}
+                  <div className="mb-6 space-y-4">
+                    {/* Search Bar */}
+                    <div className="relative">
+                      <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-500" />
+                      <input
+                        type="text"
+                        placeholder="Search menu..."
+                        className="pl-10 w-full p-2 border rounded-md"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                      />
+                    </div>
+        
+                    {/* Category Filters */}
+                    <div className="flex flex-wrap gap-2">
+                      {categories.map(category => (
+                        <Button
+                          key={category}
+                          variant={selectedCategory === category ? "default" : "outline"}
+                          onClick={() => setSelectedCategory(category)}
+                          className="px-4 py-2"
+                        >
+                          {category}
+                        </Button>
+                      ))}
+                    </div>
+        
+                    {/* Vegetarian Toggle */}
+                    <Button
+                      variant={showVegetarian ? "default" : "outline"}
+                      onClick={() => setShowVegetarian(!showVegetarian)}
+                      className="px-4 py-2"
+                    >
+                      🥬 Vegetarian Only
+                    </Button>
+                  </div>
+        
+                  {/* Menu Items Grid */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {filteredItems.map(item => (
+                      <Card key={item.id} className="hover:shadow-lg transition-shadow">
+                        <CardContent className="p-4">
+                          <div className="flex justify-between items-start mb-2">
+                            <h3 className="text-lg font-semibold">{item.name}</h3>
+                            <span className="font-bold">${item.price}</span>
+                          </div>
+                          <p className="text-gray-600 mb-2">{item.description}</p>
+                          <div className="flex justify-between items-center text-sm text-gray-500">
+                            <span>{item.calories} calories</span>
+                            {item.isVegetarian && (
+                              <span className="text-green-600">🥬 Vegetarian</span>
+                            )}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+        
+                  {/* No Results Message */}
+                  {filteredItems.length === 0 && (
+                    <div className="text-center py-8 text-gray-500">
+                      No menu items found matching your criteria
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            </div>
+          );
+        };
+
+        // Mount the React app
+        const root = ReactDOM.createRoot(document.getElementById('menu-root'));
+        root.render(<DynamicMenu />);
+    </script>
+</body>
+</html>
